@@ -1,0 +1,33 @@
+﻿<Window x:Class="MyriamBot.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:WPFMediaKit.DirectShow.Controls;assembly=WPFMediaKit"
+        Title="Myriam - The Bot" Background="#FF7CA0FF" ResizeMode="CanMinimize" Loaded="Window_Loaded">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="200" />
+        </Grid.ColumnDefinitions>
+        <TextBox Name="chatBox" IsReadOnly="True" VerticalScrollBarVisibility="Visible" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="0"/>
+        <ComboBox Name="cbCameras" SelectionChanged="cbCameras_SelectionChanged" Grid.Row="1" Grid.Column="1" />
+        <controls:VideoCaptureElement Name="captureElement" EnableSampleGrabbing="true" Visibility="Visible" Grid.Row="0" Grid.Column="1" />
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="130" />
+            </Grid.ColumnDefinitions>
+            <Label Content="Message:" Name="lblMessage" Grid.Column="0" />
+            <TextBox Name="messageText" Width="305" KeyUp="MessageText_KeyUp" Grid.Column="1"/>
+            <Button Content="Send" Name="sendMessageButton" Click="SendMessageButton_Click" Grid.Column="2"/>
+
+        </Grid>
+    </Grid>
+</Window>
