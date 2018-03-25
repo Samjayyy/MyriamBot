@@ -23,7 +23,7 @@ namespace MyriamBot.Conversation
             return 1D * cnt / keywords.Count;
         }
 
-        public override async Task<AbstractConversationState> Start()
+        public override async Task<AbstractConversation> Start()
         {
             if (_window.ActivePerson == null)
             {

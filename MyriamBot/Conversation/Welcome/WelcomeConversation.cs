@@ -28,7 +28,7 @@ namespace MyriamBot.Conversation
             return 1D * cnt / keywords.Count;
         }
 
-        public override async Task<AbstractConversationState> Start()
+        public override async Task<AbstractConversation> Start()
         {
             if (_window.ActivePerson != null)
             {
@@ -43,19 +43,19 @@ namespace MyriamBot.Conversation
 
         protected override string ConfirmationQuestion => "Shall I try again to recognize your face?";
         protected override string ConfirmationQuestionDoubleCheck => "Didn't get that, can I recheck your face, yes or no?";
-        protected override async Task<AbstractConversationState> HandleConfirmYes()
+        protected override async Task<AbstractConversation> HandleConfirmYes()
         {
             _window.ReplyAsBot("Ok I'll have another look..");
             return await HandleRecognition();
         }
 
-        protected override async Task<AbstractConversationState> HandleConfirmNo()
+        protected override async Task<AbstractConversation> HandleConfirmNo()
         {
             _window.ReplyAsBot("Ok no problem, bye..");
             return await new StartConversation(_window).Start();
         }
 
-        private async Task<AbstractConversationState> HandleRecognition()
+        private async Task<AbstractConversation> HandleRecognition()
         {
             const int FACE_ATTEMPTS = 2;
             _faceIds = new Guid[FACE_ATTEMPTS];
@@ -107,10 +107,10 @@ namespace MyriamBot.Conversation
             if (best == null)
             {
                 _window.ReplyAsBot("Looks like I don't know you yet or I just wasn't able to recognize you.");
-                return await new WelcomeConfirmNew(_window, _faceIds).Start();
+                return await new RecognizeConfirmNew(_window, _faceIds).Start();
             }
             var person = await _window.FaceApiHelper.GetPersonAsync(best.PersonId);
-            return await new WelcomeConfirm(_window, _faceIds, person).Start();
+            return await new RecognizeConfirm(_window, _faceIds, person).Start();
         }
     }
 }

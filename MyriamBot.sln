@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyriamBot", "MyriamBot\MyriamBot.csproj", "{383692E8-D6D7-448A-9839-CF9E0FAAA6AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConversationTreeAnalyzer", "ConversationTreeAnalyzer\ConversationTreeAnalyzer.csproj", "{27E44096-DDB6-4CAB-8A4E-3DCB8703062A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{383692E8-D6D7-448A-9839-CF9E0FAAA6AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{383692E8-D6D7-448A-9839-CF9E0FAAA6AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{383692E8-D6D7-448A-9839-CF9E0FAAA6AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27E44096-DDB6-4CAB-8A4E-3DCB8703062A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27E44096-DDB6-4CAB-8A4E-3DCB8703062A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27E44096-DDB6-4CAB-8A4E-3DCB8703062A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27E44096-DDB6-4CAB-8A4E-3DCB8703062A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

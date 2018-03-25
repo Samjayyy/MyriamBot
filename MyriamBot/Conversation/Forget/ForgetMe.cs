@@ -26,13 +26,13 @@ namespace MyriamBot.Conversation
         protected override string ConfirmationQuestion => $"Are you sure that I should not remember you anymore, {_window.ActivePerson.Name}?";
         protected override string ConfirmationQuestionDoubleCheck => $"Sorry, I didn't get that. Should I forget about you {_window.ActivePerson.Name}, yes or no?";
 
-        protected override async Task<AbstractConversationState> HandleConfirmNo()
+        protected override async Task<AbstractConversation> HandleConfirmNo()
         {
             _window.ReplyAsBot($"Ok fine, happy that you want me to remember you.");
             return await new StartConversation(_window).Start();
         }
 
-        protected override async Task<AbstractConversationState> HandleConfirmYes()
+        protected override async Task<AbstractConversation> HandleConfirmYes()
         {
             _window.ReplyAsBot($"Ok, it was a good time knowing you. Bye bye.");
             await _window.FaceApiHelper.RemovePersonAsync(_window.ActivePerson.PersonId);

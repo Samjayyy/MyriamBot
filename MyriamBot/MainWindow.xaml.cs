@@ -18,7 +18,7 @@ namespace MyriamBot
     /// </summary>
     public partial class MainWindow : Window, IMainWindow
     {
-        private AbstractConversationState _conversationState;
+        private AbstractConversation _conversationState;
         public MainWindow(IFaceApiHelper faceApiHelper)
         {
             InitializeComponent();

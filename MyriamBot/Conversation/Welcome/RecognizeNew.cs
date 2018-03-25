@@ -5,21 +5,21 @@ using System.Threading.Tasks;
 
 namespace MyriamBot.Conversation
 {
-    public class WelcomeNew : AbstractConversationState
+    public class RecognizeNew : AbstractConversation
     {
         private readonly Guid[] _faceIds;
-        public WelcomeNew(IMainWindow window, Guid[] faceIds) : base(window)
+        public RecognizeNew(IMainWindow window, Guid[] faceIds) : base(window)
         {
             _faceIds = faceIds;
         }
 
-        public override async Task<AbstractConversationState> Start()
+        public override async Task<AbstractConversation> Start()
         {
             _window.ReplyAsBot($"Ok, What's your name please?");
             return this;
         }
 
-        public override async Task<AbstractConversationState> HandleUserInput(string msg)
+        public override async Task<AbstractConversation> HandleUserInput(string msg)
         {
             var name = ParseName(msg);
             if (string.IsNullOrWhiteSpace(name))

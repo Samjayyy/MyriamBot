@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 
 namespace MyriamBot.Conversation
 {
-    public class WelcomeConfirm : ConfirmationConversation
+    public class RecognizeConfirm : ConfirmationConversation
     {
         private readonly Guid[] _faceIds;
         private readonly Person _person;
-        public WelcomeConfirm(IMainWindow window, Guid[] faceIds, Person person) : base(window)
+        public RecognizeConfirm(IMainWindow window, Guid[] faceIds, Person person) : base(window)
         {
             _faceIds = faceIds;
             _person = person;
@@ -17,12 +17,12 @@ namespace MyriamBot.Conversation
 
         protected override string ConfirmationQuestionDoubleCheck => $"Sorry, I didn't get that. Are you {_person.Name}, yes or no?";
 
-        protected override async Task<AbstractConversationState> HandleConfirmNo()
+        protected override async Task<AbstractConversation> HandleConfirmNo()
         {
             _window.ReplyAsBot($"Hmm ok, my mistake.");
-            return await new WelcomeConfirmNew(_window, _faceIds).Start();
+            return await new RecognizeConfirmNew(_window, _faceIds).Start();
         }
-        protected override async Task<AbstractConversationState> HandleConfirmYes()
+        protected override async Task<AbstractConversation> HandleConfirmYes()
         {
             _window.ReplyAsBot($"Great! What can I do for you?");
             _window.ActivePerson = _person;

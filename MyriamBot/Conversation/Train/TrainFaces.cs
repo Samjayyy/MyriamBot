@@ -23,7 +23,7 @@ namespace MyriamBot.Conversation
             return 1D * cnt / keywords.Count;
         }
 
-        public override async Task<AbstractConversationState> Start()
+        public override async Task<AbstractConversation> Start()
         {
             _window.ReplyAsBot("I'm learning all the names of those who have recently passed by.");
             await _window.FaceApiHelper.StartTrainingAsync();

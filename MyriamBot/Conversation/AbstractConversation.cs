@@ -4,19 +4,19 @@ using System.Threading.Tasks;
 
 namespace MyriamBot.Conversation
 {
-    public abstract class AbstractConversationState
+    public abstract class AbstractConversation
     {
         protected IMainWindow _window;
 
-        public AbstractConversationState(IMainWindow window)
+        public AbstractConversation(IMainWindow window)
         {
             _window = window;
         }
-        public virtual async Task<AbstractConversationState> Start()
+        public virtual async Task<AbstractConversation> Start()
         {
             return this;
         }
-        public abstract Task<AbstractConversationState> HandleUserInput(string msg);
+        public abstract Task<AbstractConversation> HandleUserInput(string msg);
 
         public virtual double IntentScore(string msg, HashSet<string> keywords)
         {

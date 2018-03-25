@@ -3,12 +3,12 @@ using System.Threading.Tasks;
 
 namespace MyriamBot.Conversation
 {
-    public class StartConversation : AbstractConversationState
+    public class StartConversation : AbstractConversation
     {
-        private AbstractConversationState[] _conversations;
+        private AbstractConversation[] _conversations;
         public StartConversation(IMainWindow window) : base(window)
         {
-            _conversations = new AbstractConversationState[]
+            _conversations = new AbstractConversation[]
             {
               new WelcomeConversation(_window)
             , new ForgetMe(_window)
@@ -17,12 +17,12 @@ namespace MyriamBot.Conversation
             };
         }
 
-        public override async Task<AbstractConversationState> Start()
+        public override async Task<AbstractConversation> Start()
         {
             return this;
         }
 
-        public override async Task<AbstractConversationState> HandleUserInput(string msg)
+        public override async Task<AbstractConversation> HandleUserInput(string msg)
         {
             var keywords = msg.ParseKeywords();
             int best = -1;
