@@ -37,6 +37,7 @@ namespace MyriamBot.Conversation
             _window.ReplyAsBot($"Ok, it was a good time knowing you. Bye bye.");
             await _window.FaceApiHelper.RemovePersonAsync(_window.ActivePerson.PersonId);
             _window.ActivePerson = null;
+            await _window.FaceApiHelper.StartTrainingAsync(); // so the person is not found anymore in the cached learning model
             return await new StartConversation(_window).Start();
         }
     }

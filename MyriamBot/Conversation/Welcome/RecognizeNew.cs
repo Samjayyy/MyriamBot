@@ -34,8 +34,10 @@ namespace MyriamBot.Conversation
                 {
                     await _window.FaceApiHelper.AddFaceImageAsync(create.PersonId, stream);
                 }
-                await _window.FaceApiHelper.StartTrainingAsync();
             }
+            await _window.FaceApiHelper.StartTrainingAsync();
+            _window.ActivePerson = await _window.FaceApiHelper.GetPersonAsync(create.PersonId);
+            // TODO lookup created person and set as active person
             _window.ReplyAsBot($"What can I do for you?");
             return await new StartConversation(_window).Start();
         }
